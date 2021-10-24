@@ -32,7 +32,7 @@ SummaryStats <- MatchData %>%
 
 ```
 
-***Total Performance Indicators:***
+***Total Performance Indicators by Game:***
 ```{r View Total Performance Indicators}
 # First off, lets get see how this athlete has performed, based on the total of their performance indicators, across a 5 games 
 
@@ -50,7 +50,7 @@ ggplotly(Plot1)
 
 ```
 
-***Total Performance Indicators:***
+***Total Performance Indicators by Quarter:***
 ```{r Action Areas}
 # Here we can see the action areas for the athlete. This plot shows which the athlete accumulated most of their possession based on field location. 
 Plot2 <- MatchData %>%
@@ -63,6 +63,7 @@ Plot2 <- MatchData %>%
 ggplotly(Plot2)
 ```
 ***Specific Action Data***
+
 The two plots below show data points for specifc action data (Plot 1 = Handball Data, Plot 2 = Kicking Data)
 
 ***HANDBALL DATA***
@@ -80,6 +81,7 @@ HBD <- ggplot(HandballData, aes(x= Quarter, y = Location)) +
 
 ggplotly(HBD)
 ```
+
 ***KICKING DATA***
 ```{r Specfic Action Data Kicking}
 # Kicking Data
