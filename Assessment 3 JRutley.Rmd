@@ -11,7 +11,10 @@ output:
 ```{r setup, R.options=knitr::opts_chunk$set(warnings=FALSE, message=FALSE, fig.width = 10, fig.height=8)}
 ```
 ***Introduction:***
-This R Markdown Document will analysis spatiotemeral data from an AFL Game as part of my asssesment 3 for SES7005.
+
+This R Markdown Document will analysis spatiotemeral data from an AFL Game as part of my assessment 3 for SES7005. Further information and documents for reproducibility can be found at:
+
+https://github.com/JarrodRutley/SES7005_Assessment_3
 
 ```{r Load R Packages}
 
@@ -20,7 +23,7 @@ library(tidyverse)
 library(plotly)
 library(viridis)
 
-# Let's import Data set 2 will be the focus of this report
+# Import Data set 2. Which will be the focus of this assessment
 RawData <- read.csv("Assessment3_SpatiotemporalDataset2.csv")
 
 # Remove all the NA's form data set. This will allows us to focus on the performance indicators also makes things a bit easier to work with
@@ -33,6 +36,8 @@ SummaryStats <- MatchData %>%
 ```
 
 ***Total Performance Indicators by Game:***
+This bar chart shows the total action events colored by location and wrapped by game. This shows us that this particular athlete accumulates a lot of their possessions across the midfield. It also shows that their role may have changed over the five games (More defensive in Game 1, more attacking in Game 5).
+
 ```{r View Total Performance Indicators}
 # First off, lets get see how this athlete has performed, based on the total of their performance indicators, across a 5 games 
 
@@ -51,6 +56,7 @@ ggplotly(Plot1)
 ```
 
 ***Total Performance Indicators by Quarter:***
+The chart below shows the total action events colored by total and plotted by Quarter. It shows that most the action events are occurring in the midfield (As stated above) and that not lot of action events are occurring in the forward part of the ground, this could be because the athlete is playing the role of a defensive winger who plays a defensive role outside the forward line and sets ups in preparation for a opposition rebound.
 ```{r Action Areas}
 # Here we can see the action areas for the athlete. This plot shows which the athlete accumulated most of their possession based on field location. 
 Plot2 <- MatchData %>%
@@ -64,10 +70,13 @@ ggplotly(Plot2)
 ```
 ***Specific Action Data***
 
-The two plots below show data points for specifc action data (Plot 1 = Handball Data, Plot 2 = Kicking Data)
+The two plots below show data points for specific action data (Plot 1 = Handball Data, Plot 2 = Kicking Data). 
+
+By plotting these two filtered data sets we can analysis what kind of possessions the athlete has and where they are occurring. We can see that they have a high handball ineffective/clanger count in the attacking midfield and that they are more likely to kick short in particular in the defensive half of the ground. 
 
 ***HANDBALL DATA***
 ```{r Specfic Action Data Handball}
+
 #Handball Data
 HandballData <- MatchData %>% 
   filter(Action == "Handball Effective" | Action == "Handball Ineffective" | Action == "Handball Clanger")
@@ -84,6 +93,7 @@ ggplotly(HBD)
 
 ***KICKING DATA***
 ```{r Specfic Action Data Kicking}
+
 # Kicking Data
 KickingData <- MatchData %>% 
   filter(Action == "Kick Backwards" | Action == "Kick Clanger" | Action == "Kick Ineffective" | Action == "Kick Inside 50" | Action == "Kick Short" | Action == "Kick Long")
